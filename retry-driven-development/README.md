@@ -12,7 +12,10 @@ To be clear, I am not claiming credit for this idea. In fact, much of this post 
 
 Suppose we work for a retail company that has historically operated only in the United States, but  now seeks to expand its operations worldwide. We can imagine an `order_items` table that used to look like this:
 
-[order_items](https://www.notion.so/5138a82975cd470d9986746c8996e50d)
+| Column 1       | Column 2     | Column 3     |
+| :------------- | :----------: | -----------: |
+|  Cell Contents | More Stuff   | And Again    |
+| You Can Also   | Put Pipes In | Like this \| |
 
 But will be migrated to look like this (note the additional item in a non-USD currency):
 
