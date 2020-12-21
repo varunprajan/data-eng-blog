@@ -12,14 +12,20 @@ To be clear, I am not claiming credit for this idea. In fact, much of this post 
 
 Suppose we work for a retail company that has historically operated only in the United States, but  now seeks to expand its operations worldwide. We can imagine an `order_items` table that used to look like this:
 
-| Column 1       | Column 2     | Column 3     |
-| :------------- | :----------: | -----------: |
-|  Cell Contents | More Stuff   | And Again    |
-| You Can Also   | Put Pipes In | Like this \| |
+| order_item_id | order_id | item_name | amount_usd |
+| :-----------: | :------: | :-------: | :--------: |
+| 1 | 1 | Breezy Dress | 53.49 |
+| 2 | 2 | V-neck Shirt | 18.99 |
+| 3 | 2 | Muscle Tank  | 42.69 |
 
 But will be migrated to look like this (note the additional item in a non-USD currency):
 
-[order_items](https://www.notion.so/4d6ee537afb14a358312066c9a2b90ef)
+| order_item_id | order_id | item_name | amount | currency_code |
+| :-----------: | :------: | :-------: | :----: | :-----------: |
+| 1 | 1 | Breezy Dress | 53.49 | USD |
+| 2 | 2 | V-neck Shirt | 18.99 | USD |
+| 3 | 2 | Muscle Tank | 42.69 | USD |
+| 4 | 3 | Red Sari | 1800.00 | INR |
 
 We would like to be able to continue reporting our daily gross revenue (in USD) in our company "key metrics email". To do this, we will collect data on a daily basis for worldwide exchange rates in terms of USD. Supposing this table is called `historical_exchange_rates`, with three columns, `date` ,`currency_code`, and `exchange_rate_usd`, our revenue query might look like:
 
