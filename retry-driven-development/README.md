@@ -27,7 +27,15 @@ But will be migrated to look like this (note the additional item in a non-USD cu
 | 3 | 2 | Muscle Tank | 42.69 | USD | 2020-12-03 04:00:01 |
 | 4 | 3 | Red Sari | 1800.00 | INR | 2020-12-05 23:49:04 |
 
-We would like to be able to continue reporting our daily gross revenue (in USD) in our company "key metrics email". To do this, we will collect data on a daily basis for worldwide exchange rates in terms of USD. Supposing this table is called `historical_exchange_rates`, with three columns, `date` ,`currency_code`, and `exchange_rate_usd`, our revenue query might look like:
+We would like to be able to continue reporting our daily gross revenue (in USD) in our company "key metrics email". To do this, we will collect data on a daily basis for worldwide exchange rates in terms of USD. Suppose this table is called `historical_exchange_rates`, with three columns, `date` ,`currency_code`, and `exchange_rate_usd`, like so:
+
+| date | currency_code | exchange_rate_usd |
+| :--: | :-----------: | :---------------: |
+| 2020-12-01 | USD | 1.00 |
+| 2020-12-01 | INR | 0.0136 |
+| 2020-12-02 | USD | 1.00 |
+
+our revenue query for the report would be:
 
 ```sql
 SELECT
