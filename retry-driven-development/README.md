@@ -36,7 +36,7 @@ SELECT
     SUM(order_items.amount * COALESCE(historical_exchange_rates.exchange_rate_usd, 0))
 FROM order_items
 LEFT JOIN historical_exchange_rates ON order_items.ordered_at::DATE = historical_exchange_rates.date
-                                                                        AND order_items.currency_code = historical_exchange_rates.currency_code
+                                    AND order_items.currency_code = historical_exchange_rates.currency_code
 WHERE
     -- only report on data from the last 60 days
     ordered_at > CURRENT_DATE - INTERVAL '60 DAY'
@@ -81,8 +81,8 @@ def main():
       # insert (append) it into our data warehouse table
     append_data(frame, db_conn=DB_CONN, table=TABLE_NAME)
 
-        # email recipients that job finished
-        email_notification(
+    # email recipients that job finished
+    email_notification(
         recipients=EMAIL_RECIPIENTS,
         contents="Exchange rate job succeeded!",
     )
@@ -93,7 +93,7 @@ if __name__ == "__main__":
     except Exception as e:
         logger.info(f"Something bad happened, exception info: {e}")
         email_notification(
-                  recipients=EMAIL_RECIPIENTS,
+            recipients=EMAIL_RECIPIENTS,
             contents="Exchange rate job failed; check logs",
         )
 ```
