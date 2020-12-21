@@ -34,6 +34,7 @@ We would like to be able to continue reporting our daily gross revenue (in USD) 
 | 2020-12-01 | USD | 1.00 |
 | 2020-12-01 | INR | 0.0136 |
 | 2020-12-02 | USD | 1.00 |
+| ... | ... | ... |
 
 our revenue query for the report would be:
 
