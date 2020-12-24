@@ -1,0 +1,28 @@
+
+# Name your package! Package names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'incremental_revenue'
+version: '2.0'
+
+# This setting configures which "profile" dbt uses for this project. Profiles contain
+# database connection information, and should be configured in the  ~/.dbt/profiles.yml file
+profile: 'default'
+
+# These configurations specify where dbt should look for different types of files.
+# The `source-paths` config, for example, states that source models can be found
+# in the "models/" directory. You probably won't need to change these!
+source-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+data-paths: ["data"]
+macro-paths: ["macros"]
+
+# You can define configurations for models in the `source-paths` directory here.
+# Using these configurations, you can enable or disable models, change how they
+# are materialized, and more!
+
+models:
+  incremental_revenue:
+    final:
+      materialized: table
