@@ -87,7 +87,7 @@ def main():
     # transform data into pandas dataframe
     frame = transform_data(raw_data=json_data)
 
-      # insert (append) it into our data warehouse table
+    # insert (append) it into our data warehouse table
     append_data(frame, db_conn=DB_CONN, table=TABLE_NAME)
 
     # email recipients that job finished
