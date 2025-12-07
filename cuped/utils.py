@@ -1,5 +1,5 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 import statsmodels.formula.api as smf
 
 
@@ -28,17 +28,20 @@ class DataGenerationContinuousMetric:
         # Treatment status (0 = control, 1 = treatment)
         experiment_group = rng.choice(a=[0, 1], size=N)
 
-        # Individual outcome pre-treatment
+        # Pre-treatment value of metric (Gaussian)
         if self.y0_noise_dist == "normal":
             y0_noise = rng.normal(loc=0.0, scale=1.0, size=N)
         elif self.y0_noise_dist == "lognormal":
             y0_noise = rng.lognormal(mean=0.0, sigma=1.0, size=N)
         y0 = self.y0_intercept + self.y0_bias * experiment_group + y0_noise
+
+        # Metric (linearly related to pre-treatment value of metric)
         y1_noise = rng.normal(loc=0.0, scale=1.0, size=N)
         y1 = y0 + self.y1_offset + self.treatment_effect * experiment_group + y1_noise
 
         # Generate the dataframe
         # use y0 (pre-treatment value of metric) as the covariate, X
+        # rename y1 to y
         df = pd.DataFrame(
             {"i": i, "experiment_group": experiment_group, "X": y0, "y": y1}
         )
